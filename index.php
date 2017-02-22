@@ -12,8 +12,11 @@ function displaySuperHeroes(){
     $dirname = "img/superheroes/";
     $images = glob($dirname."*.jpg");
         foreach($images as $image) {
+            echo '<center>';
             echo '<br />';
+            echo $image;
             echo '<img src="'.$image.'" /><br />';
+            echo '</center>';
         }
 }
 ?>
