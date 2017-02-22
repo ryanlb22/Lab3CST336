@@ -8,17 +8,29 @@ function displayHand(){
 function displayWinners(){
     
 }
-
+function displaySuperHeroes(){
+    $dirname = "img/superheroes/";
+    $images = glob($dirname."*.jpg");
+        foreach($images as $image) {
+            echo '<br />';
+            echo '<img src="'.$image.'" /><br />';
+        }
+}
 ?>
 <html>
     <header>
     <title>Silver Jack</title>
         <center>
-            <h1>Silver Jack</h1>
+            <h1>Super Hero Silver Jack</h1>
         </center>
     </header>
     
     <body>
+        
+        <?php
+        displaySuperHeroes();
+        ?>
+
         <hr>
         <footer>
             <center>
