@@ -102,6 +102,7 @@ function displayWinners(){ // not done yet
     global $totals;
     
     $winner = 0;
+    $all_winners = [];
     for ($i=1; $i<4; $i++)
     {
         if ($totals[$i] <= 42)
@@ -110,6 +111,13 @@ function displayWinners(){ // not done yet
                 $winner = $i;
         }
            
+    }
+    for ($i = 0; $i < 4; $i++)
+    {
+        if ($totals[$i] == $totals[$winner])
+        {
+            array_push($all_winners, $i);
+        }
     }
     
     $totalWinPoints = 0;
@@ -120,7 +128,16 @@ function displayWinners(){ // not done yet
             $totalWinPoints += $totals[$i];
     }
     
-    echo $players[$winner] . " wins " . $totalWinPoints . " points!!";
+    if (count($all_winners) == 1)
+            echo "1 Winner: ". "<br />";
+    else 
+        echo count($all_winners) . " Winners: " . "<br />";
+    //echo $players[$winner] . " wins " . $totalWinPoints . " points!!";
+    for ($i = 0; $i < count($all_winners); $i++)
+    {
+        
+        echo $players[$all_winners[$i]] . " wins " . $totalWinPoints . " points!!" . "<br />";
+    }
 }
 
 ?>
