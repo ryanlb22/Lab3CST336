@@ -151,23 +151,30 @@ function displayWinners(){
 <html>
     <header>
     <title>Silver Jack</title>
-        <center>
-            <h1>Silver Jack</h1>
-        </center>
+
     </header>
     
     <body>
+        <div id ="container">
+            
         
-        <?=getHand()?>
-        <?=displayHand()?>
-        <?=displayWinners()?>
+        <div id ="heading">
+            <center>
+                <h1>Silver Jacks</h1>
+            </center>
+        </div>
+        
+            <div id ="main">
+            <?=getHand()?>
+            <?=displayHand()?>
+            <?=displayWinners()?>
+            </div>
         
         <hr>
-        <footer>
-            <center>
+            <div id ="footer">
                 Disclaimer: All material above is used for teaching purposes. Information might be inaccurate.
-            </center>
-        </footer>
+            </div>
+        </div>
     </body>
 </html>
 
