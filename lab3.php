@@ -96,7 +96,7 @@ function displayHand(){
     }
 }
 
-function displayWinners(){ // not done yet
+function displayWinners(){ 
 
     global $players;
     global $totals;
@@ -124,7 +124,13 @@ function displayWinners(){ // not done yet
     
     for ($i=0; $i<4; $i++)
     {
-        if ($i != $winner)
+        $checker = false;
+        for ($j = 0; $j < count($all_winners); $j++) // checks to see if a player is a winner
+        {
+            if ($i == $all_winners[$j])
+                $checker = true;
+        }
+        if ($checker == false)
             $totalWinPoints += $totals[$i];
     }
     
@@ -132,7 +138,8 @@ function displayWinners(){ // not done yet
             echo "1 Winner: ". "<br />";
     else 
         echo count($all_winners) . " Winners: " . "<br />";
-    //echo $players[$winner] . " wins " . $totalWinPoints . " points!!";
+        
+    
     for ($i = 0; $i < count($all_winners); $i++)
     {
         
