@@ -48,14 +48,13 @@ function displayHand(){
     global $playersCards;
     global $totals;
     
+    echo "<table>";
+    
     for($i=0; $i<4; $i++)
-    { 
-        echo "<h3>";
-        echo $players[$i];
-        echo "</h3>";
+    {
+        echo "<tr><td>";
         switch($players[$i])
         {
-            
             case "Superman":
                 echo "<img src='img/superheroes/superman.jpg'/>";
                 break;
@@ -69,7 +68,9 @@ function displayHand(){
                 echo "<img src='img/superheroes/spiderman.jpg'/>";
                 break;
         }
-       
+        echo "</td>";
+        
+        echo "<td rowspan = '2'>";
         for ($j=0; $j<count($playersCards[$i]); $j++)
         {
             $suit = floor(($playersCards[$i][$j]-1)/13); // integer division
@@ -94,9 +95,14 @@ function displayHand(){
                     break;
             }
         }
-        echo "Total: " . $totals[$i] . "<br />";
-        
+        echo "</td>";
+
+         
+        echo "<td rowspan = '2'>Total: " . $totals[$i] . "</td>";
+        echo "</tr>";
+        echo "<tr><td>" . $players[$i] . "</td></tr>";
     }
+    echo "</table>";
 }
 
 function displayWinners(){ 
@@ -124,7 +130,7 @@ function displayWinners(){
     }
     
     $totalWinPoints = 0;
-    echo "<div class = 'bottomRight'>";
+    
     for ($i=0; $i<4; $i++)
     {
         $checker = false;
@@ -138,49 +144,47 @@ function displayWinners(){
     }
     
     if (count($all_winners) == 1)
-    
-            echo "1 Winner: ". "<br />";
-        
+            echo "<h2>1 Winner</h2>";
     else 
-        echo count($all_winners) . " Winners: " . "<br />";
-        
+        echo "<h2>" . count($all_winners) . " Winners" . "</h2>";
     
     for ($i = 0; $i < count($all_winners); $i++)
     {
         
-        echo $players[$all_winners[$i]] . " wins " . $totalWinPoints . " points!!" . "<br />";
+        echo "<h2>" . $players[$all_winners[$i]] . " wins " . $totalWinPoints . " points!!</h2>";
     }
-    echo "</div>";
-    
 }
 
 ?>
 <html>
     <head>
     <title>Silver Jack</title>
-    <style>
-        @import url("css/styles.css");
-    </style>
+    <link type="text/css" rel="stylesheet" href="css/styles.css">
     </head>
     
     <body>
-            <center>
+        <div id ="container">
+            
+            <div id ="heading">
                 <h1>Silver Jack</h1>
-            </center>
-
+            </div>
         
+            <div id ="main">
+                <?=getHand()?>
+                <?=displayHand()?>
+                <?=displayWinners()?>
+            </div>
 
-            <?=getHand()?>
-            <?=displayHand()?>
-            <?=displayWinners()?>
-
-        
+            <h2><a href="lab3.php">Play Again!</a></h2>
+            
             <hr>
-                <footer>
-                    Disclaimer: All material above is used for teaching purposes. Information might be inaccurate.
-                </footer>
+            <footer>
+                Disclaimer: All material above is used for teaching purposes. Information might be inaccurate.
+                <br /> <br />
+                <img src="img/csumb-logo.png" alt="CSUMB Logo" height="100" width="100" />
+            </footer>
         
+        </div>
     </body>
-
 </html>
 
