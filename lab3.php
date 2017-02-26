@@ -49,9 +49,13 @@ function displayHand(){
     global $totals;
     
     for($i=0; $i<4; $i++)
-    {
+    { 
+        echo "<h3>";
+        echo $players[$i];
+        echo "</h3>";
         switch($players[$i])
         {
+            
             case "Superman":
                 echo "<img src='img/superheroes/superman.jpg'/>";
                 break;
@@ -65,8 +69,7 @@ function displayHand(){
                 echo "<img src='img/superheroes/spiderman.jpg'/>";
                 break;
         }
-        echo $players[$i];
-    
+       
         for ($j=0; $j<count($playersCards[$i]); $j++)
         {
             $suit = floor(($playersCards[$i][$j]-1)/13); // integer division
@@ -121,7 +124,7 @@ function displayWinners(){
     }
     
     $totalWinPoints = 0;
-    
+    echo "<div class = 'bottomRight'>";
     for ($i=0; $i<4; $i++)
     {
         $checker = false;
@@ -135,7 +138,9 @@ function displayWinners(){
     }
     
     if (count($all_winners) == 1)
+    
             echo "1 Winner: ". "<br />";
+        
     else 
         echo count($all_winners) . " Winners: " . "<br />";
         
@@ -145,36 +150,37 @@ function displayWinners(){
         
         echo $players[$all_winners[$i]] . " wins " . $totalWinPoints . " points!!" . "<br />";
     }
+    echo "</div>";
+    
 }
 
 ?>
 <html>
-    <header>
+    <head>
     <title>Silver Jack</title>
-
-    </header>
+    <style>
+        @import url("css/styles.css");
+    </style>
+    </head>
     
     <body>
-        <div id ="container">
-            
-        
-        <div id ="heading">
             <center>
-                <h1>Silver Jacks</h1>
+                <h1>Silver Jack</h1>
             </center>
-        </div>
+
         
-            <div id ="main">
+
             <?=getHand()?>
             <?=displayHand()?>
             <?=displayWinners()?>
-            </div>
+
         
-        <hr>
-            <div id ="footer">
-                Disclaimer: All material above is used for teaching purposes. Information might be inaccurate.
-            </div>
-        </div>
+            <hr>
+                <footer>
+                    Disclaimer: All material above is used for teaching purposes. Information might be inaccurate.
+                </footer>
+        
     </body>
+
 </html>
 
